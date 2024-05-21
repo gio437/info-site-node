@@ -1,8 +1,10 @@
 let http = require('http');
 let fs = require('fs');
 let url = require('url');
+let express = require("express");
+let app = express();
 
-http.createServer((req, res) => {
+app.use((req, res) => {
     let q = url.parse(req.url, true);
     let fileName = '.' + q.pathname;
     fs.readFile(fileName, function(err, data) {
